@@ -3,7 +3,7 @@
     <MyCard class="motivationPorn">
       <template #title> 毒鸡汤 </template>
       <template #right>
-        <van-icon name="replay" />
+        <van-icon @click="replay" name="replay" />
       </template>
       <template #content>
         <div class="content">{{ say }}</div>
@@ -13,7 +13,7 @@
       <template #title> 随机图 </template>
       <template #content>
         <div class="content">
-          <img src="https://sex.nyan.xyz/api/v2/img" alt="" />
+          <img src="https://api.wrdan.com/randimg" alt="随机图接口出现问题" />
         </div>
       </template>
     </MyCard>
@@ -32,6 +32,25 @@ export default {
   },
   components: {
     MyCard,
+  },
+  mounted() {
+    this.loadSays();
+  },
+  methods: {
+    replay() {
+      this.loadSays();
+      console.log("this.say", this.say);
+    },
+    loadSays() {
+      this.$axios
+        .get("https://v.api.aa1.cn/api/api-wenan-dujitang/index.php?aa1=json")
+        .then((result) => {
+          this.say = result.data[0].dujitang;
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+    },
   },
 };
 </script>
