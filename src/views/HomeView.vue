@@ -39,7 +39,6 @@ export default {
   methods: {
     replay() {
       this.loadSays();
-      console.log("this.say", this.say);
     },
     loadSays() {
       this.$axios
