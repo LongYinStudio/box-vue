@@ -8,6 +8,8 @@ import { Tabbar, TabbarItem } from 'vant';
 import { NavBar } from 'vant';
 import axios from 'axios';
 
+import "@/assets/styles/reset.scss"
+
 Vue.use(Vant);
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
